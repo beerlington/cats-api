@@ -4,9 +4,9 @@ class V1::CloudinaryParamsController < ApplicationController
     render json: {
       timestamp: timestamp,
       signature: Digest::SHA1.hexdigest(
-        "timestamp=#{timestamp}#{ENV['API_SECRET']}"
+        "timestamp=#{timestamp}#{Rails.application.secrets.cloudinary_secret}"
       ),
-      api_key: ENV['API_KEY']
+      api_key: Rails.application.secrets.cloudinary_key
     }
   end
 end

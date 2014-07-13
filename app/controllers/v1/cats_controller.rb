@@ -1,6 +1,6 @@
 class V1::CatsController < ApplicationController
   def index
-    render json: Cat.all
+    render json: Cat.all, each_serializer: CatSerializer
   end
 
   def create
